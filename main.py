@@ -3,8 +3,13 @@ from aiogram import Bot, Dispatcher, F
 from aiogram.filters import CommandStart
 from aiogram.types import Message, CallbackQuery
 import time
+<<<<<<< HEAD
 from keyboards import start_main_kbb, mouse_main_kbb
 from mouse_def import LKM_mouse_def, PKM_mouse_def, left_mouse_def, right_mouse_def, down_mouse_def, upstairs_mouse_def, block_mouse_def
+=======
+from keyboards import start_main_kbb, mouse_main_kbb, screen_kbb
+from screenshot import make_screenshot
+>>>>>>> dc7d0e73dec6e2a264f9945b058ec2cd9273eab4
 
 
 
@@ -67,6 +72,16 @@ async def unlocking_mouse_main(callback: CallbackQuery):
     upstairs_mouse_def()
     await callback.message.answer("Мышка разблокирована.")
 
+
+@dp.message(F.text == "🖥 - Экран")
+async def mouse_main(message: Message):
+    await message.answer("Выберите что вам нужно:", reply_markup=screen_kbb)
+    
+
+@dp.callback_query(F.data == 'screenshot')
+async def screenshot(callback: CallbackQuery):
+    make_screenshot()
+    
 
 
 async def main():
