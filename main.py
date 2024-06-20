@@ -3,7 +3,7 @@ from aiogram import Bot, Dispatcher, F
 from aiogram.filters import CommandStart
 from aiogram.types import Message
 import time
-from keyboards import start_main_kbb 
+from keyboards import start_main_kbb, mouse_main_kbb
 
 
 
@@ -18,6 +18,12 @@ async def start_main(message: Message):
     await message.answer("🌟 Привет! Спасибо, что выбрал именно нашего бота! 🌟\nНаш телеграмм - https://t.me/+LXG_pxKV0AtjMzE6")
     time.sleep(0.5)
     await message.answer("Выбери тебе нужный пункт.", reply_markup=start_main_kbb)
+
+
+@dp.message(F.text == "🖱 - Мышь")
+async def mouse_main(message: Message):
+    await message.answer("Выберите что вам нужно:", reply_markup=mouse_main_kbb)
+
 
 
 async def main():
