@@ -1,9 +1,10 @@
 import asyncio
 from aiogram import Bot, Dispatcher, F
 from aiogram.filters import CommandStart
-from aiogram.types import Message
+from aiogram.types import Message, CallbackQuery
 import time
-from keyboards import start_main_kbb, mouse_main_kbb
+from keyboards import start_main_kbb, mouse_main_kbb, screen_kbb
+from screenshot import make_screenshot
 
 
 
@@ -24,6 +25,16 @@ async def start_main(message: Message):
 async def mouse_main(message: Message):
     await message.answer("Выберите что вам нужно:", reply_markup=mouse_main_kbb)
 
+
+@dp.message(F.text == "🖥 - Экран")
+async def mouse_main(message: Message):
+    await message.answer("Выберите что вам нужно:", reply_markup=screen_kbb)
+    
+
+@dp.callback_query(F.data == 'screenshot')
+async def screenshot(callback: CallbackQuery):
+    make_screenshot()
+    
 
 
 async def main():

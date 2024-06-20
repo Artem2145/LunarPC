@@ -13,3 +13,7 @@ mouse_main_kbb = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text="⬜️", callback_data="AFK1"), InlineKeyboardButton(text="🔽", callback_data="down"), InlineKeyboardButton(text="⬜️", callback_data="AFK2")]
 
 ])
+
+screen_kbb = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text="Скриншот экрана", callback_data="screenshot")]
+])
